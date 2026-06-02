@@ -102,7 +102,10 @@ def load_data(file_input):
             df = pd.read_csv(file_input)
     return df
 
-DEFAULT_FILE = "studies_data.xlsx"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+DEFAULT_FILE = BASE_DIR / "studies_data.xlsx"
 
 uploaded_file = st.sidebar.file_uploader(
     "Upload a replacement database",
