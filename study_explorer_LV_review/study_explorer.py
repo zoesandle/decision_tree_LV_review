@@ -102,38 +102,6 @@ def load_data(file_input):
             df = pd.read_csv(file_input)
     return df
 
-# Ask user for file path or upload
-st.sidebar.title("📁 Data Upload")
-upload_option = st.sidebar.radio("Choose data source:", 
-                                  ["Use existing file", "Upload Excel/CSV"])
-
-if upload_option == "Upload Excel/CSV":
-    uploaded_file = st.sidebar.file_uploader("Upload your data file", 
-                                              type=['xlsx', 'csv', 'xls'])
-    if uploaded_file is not None:
-        try:
-            df = load_data(uploaded_file)
-        except Exception as e:
-            st.error(f"Error loading file: {str(e)}")
-            st.stop()
-    else:
-        st.warning("Please upload a file to continue")
-        st.stop()
-else:
-    file_path = st.sidebar.text_input(
-        "Enter file path (e.g., 'studies_data.xlsx')",
-        value="studies_data.xlsx"
-    )
-    if os.path.exists(file_path):
-        try:
-            df = load_data(file_path)
-        except Exception as e:
-            st.error(f"Error loading file: {str(e)}")
-            st.stop()
-    else:
-        st.error(f"File '{file_path}' not found. Please upload a file or enter correct path.")
-        st.stop()
-
 DEFAULT_FILE = "studies_data.xlsx"
 
 uploaded_file = st.sidebar.file_uploader(
