@@ -1,1 +1,1 @@
-Hosting the contents for study explorer.
+Hosting the contents for decision tree.
